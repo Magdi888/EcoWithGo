@@ -12,7 +12,7 @@ func NewHandler() *Handler {
 	return &Handler{}
 }
 
-func (h *Handler) RegisterRoutes(router mux.Router) {
+func (h *Handler) RegisterRoutes(router *mux.Router) {
 	router.HandleFunc("/login", h.handlerLogin).Methods("POST")
 	router.HandleFunc("/register", h.handlerRegister).Methods("POST")
 
