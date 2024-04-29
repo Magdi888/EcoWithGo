@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  mysql:
+    image: mysql
+    volumes:
+    # Persist MySQL data in a volume
+    - db_data:/var/lib/mysql
+    environment:
+    - MYSQL_DATABASE=ecom
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=123456
+    - MYSQL_ROOT_PASSWORD=123456
+    - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    restart: unless-stopped
+    ports:
+    - "3306:3306"
+  
+
+volumes:
+  db_data:

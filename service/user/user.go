@@ -1,8 +1,11 @@
 package user
 
 import (
-	"github.com/gorilla/mux"
 	"net/http"
+
+	"github.com/Magdi888/EcoWithGo/types"
+	"github.com/Magdi888/EcoWithGo/utils"
+	"github.com/gorilla/mux"
 )
 
 type Handler struct {
@@ -20,4 +23,11 @@ func (h *Handler) RegisterRoutes(router *mux.Router) {
 
 func (h *Handler) handlerLogin(w http.ResponseWriter, r *http.Request) {}
 
-func (h *Handler) handlerRegister(w http.ResponseWriter, r *http.Request) {}
+func (h *Handler) handlerRegister(w http.ResponseWriter, r *http.Request) {
+	var payload types.RegisterUserPayload
+	if err := utils.ParseJSON(r, &payload); err  != nil {
+		utils.WriteError(w, http.StatusBadRequest, err)
+	}
+// Check the  email is already in use or not
+	
+}
